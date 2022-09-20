@@ -1,5 +1,5 @@
 const container = document.querySelector('#container');
-const boxActive = document.querySelector('.box')
+const resetBtn = document.querySelector('button')
 
 function createDiv() {
   const box = document.createElement('div');
@@ -14,7 +14,15 @@ function multiDiv () {
 }
 
 multiDiv()
+const divs = document.querySelectorAll('div')
 
-boxActive.addEventListener('mousedown', () => {
-  boxActive.classList.add('active')
+container.addEventListener('mouseover', function (e) {
+  // Add the "active" class to only divs with a "box" class
+  if (e.target.matches('.box')) {
+    e.target.classList.add('active');
+  }
+});
+
+resetBtn.addEventListener('click', function () {
+  divs.forEach(div => div.classList.remove('active'))
 })
